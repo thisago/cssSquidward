@@ -7,8 +7,11 @@ Not finished yet!
 Looking to front  
 ![](images/front.png)
 
-Looking to side  
-![](images/side.png)
+Looking to right  
+![](images/right.png)
+
+Looking to left  
+![](images/left.png)
 
 ## License
 

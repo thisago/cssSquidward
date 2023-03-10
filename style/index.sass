@@ -45,10 +45,8 @@ body
   position: relative
   font-size: calc(2vh + 2vw)
   @include square(20em)
-  
   @include flexCenterItems
   align-items: initial
-
 
   .head
     @include square(80%)
@@ -58,7 +56,7 @@ body
       @include rectangle(100%, 70%)
       border-radius: 100%
       background: $skinColor
-      transform: translateY(calc(var(--looking) * .6em)) rotateY(calc(var(--looking) * -2deg))
+      transform: translateY(calc(var(--is-looking) * .6em))
       .freckles
         position: relative
         @include square(100%)
@@ -68,7 +66,7 @@ body
           border-radius: 100%
           position: absolute
           top: calc(var(--y) * 1%)
-          left: calc((var(--x) * 1%) + (var(--looking) * 1%))
+          left: calc((var(--x) * 1%) + (var(--looking) * 3%))
       .wrinkles
         @include absoluteCenterSelf
         @include flexCenterItems
@@ -102,10 +100,12 @@ body
       left: calc(50% + var(--looking) * 10%)
       &::before
         @include pseudoElement
-        @include rectangle(110%, 39%)
+        @include rectangle(110%, calc(39% + var(--looking) * 13%))
+        // transform: rotate(calc(-7.5deg + var(--looking) * -15deg))
         background: $skinColor
+        border-radius: .1em
         left: -5%
-        top: -5%
+        top: -5.1%
       .eyes
         display: flex
         @include absoluteCenterSelf
@@ -146,11 +146,6 @@ body
       // .nose
 
 
-            
-
-
-
-
     .bottom
       position: relative
       @include rectangle(100%, 20%)
@@ -177,10 +172,11 @@ body
           background: white
           top: 86%
         span
-          @include rectangle(65.5%, 20%)
+          @include rectangle(65%, 20%)
           @include absoluteCenterSelf
           background: $skinColor
-          top: -2%
+          top: 0%
+          left: calc(50% + (1.5% + var(--looking) * 3%))
         .lips
           @include rectangle(85%, 70%)
           border-top: $border
@@ -202,3 +198,10 @@ body
             left: initial
             right: -5%
             transform: rotate(15deg)
+  .neck
+    @include rectangle(1em, 3.9em)
+    @include absoluteCenterSelf
+    top: 90%
+    background: $skinColor
+    border-right: $border
+    border-left: $border
