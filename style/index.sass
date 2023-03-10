@@ -1,0 +1,156 @@
+$skinColor: #b1d6c5
+$eyeColor: #eae9b1
+$eyePupilColor: #771f0c
+$freckleColor: #306a53
+$borderColor: black
+$borderSize: .2em
+$freckleSize: 2.5%
+$wrinkleSize: .15em
+$wrinkleColor: #3c5347
+$border: $borderSize solid $borderColor
+
+*
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+
+@mixin flexCenterItems
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+@mixin absoluteCenterSelf
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%) var(--transform, )
+@mixin pseudoElement
+  position: absolute
+  content: ""
+@mixin square($size)
+  width: $size
+  height: $size
+@mixin rectangle($w, $h)
+  width: $w
+  height: $h
+
+body
+  @include flexCenterItems
+  height: 100vh
+  
+.squidward
+  --looking: 0
+  border: .1em solid #000
+  position: relative
+  font-size: calc(2vh + 2vw)
+  @include square(20em)
+  
+  @include flexCenterItems
+  align-items: initial
+
+
+  .head
+    @include square(80%)
+    position: relative
+    .top
+      border: $border
+      @include rectangle(100%, 70%)
+      border-radius: 100%
+      background: $skinColor
+      .freckles
+        position: relative
+        @include square(100%)
+        .freckle
+          @include square($freckleSize)
+          background: $freckleColor
+          border-radius: 100%
+          position: absolute
+          top: calc(var(--y) * 1%)
+          left: calc((var(--x) * 1%) + (var(--looking) * 1%))
+      .wrinkles
+        @include absoluteCenterSelf
+        @include flexCenterItems
+        top: 24%
+        width: 80%
+        height: 30%
+        
+        .wrinkle
+          border-top: $wrinkleSize solid $wrinkleColor
+          @include square(calc(var(--s) * 5%))
+          
+          border-radius: 100%
+          position: absolute
+          top: calc(var(--y) * 25%)
+          transform: translateX(calc(var(--looking) * 10%))
+          &::before, &::after
+            @include pseudoElement
+            @include square(2em)
+            background: $skinColor
+            left: 0
+          &::after
+            left: initial
+            right: 0
+    .center
+      border: $border
+      @include rectangle(50%, 40%)
+      background: $skinColor
+      --transform: rotate(calc(var(--looking) * -2deg))
+      @include absoluteCenterSelf
+      top: 70%
+      left: calc(50% + var(--looking) * 10%)
+      &::before
+        @include pseudoElement
+        @include rectangle(110%, 39%)
+        background: $skinColor
+        left: -5%
+        top: -5%
+    .bottom
+      position: relative
+      @include rectangle(100%, 20%)
+      margin-top: 15%
+      .mouth
+        @include absoluteCenterSelf
+        @include rectangle(12em, 4em)
+        background: $skinColor
+        border-radius: 40%
+        left: calc(50% + var(--looking) * 10%)
+        border: $border
+
+        &::before
+          @include pseudoElement
+          @include rectangle(100%, 80%)
+          background: white
+          border-radius: 40%
+          top: 70%
+          border-top: $border
+        &::after
+          @include pseudoElement
+          @include rectangle(100%, 1em)
+          background: white
+          top: 86%
+        span
+          @include rectangle(65.5%, 20%)
+          @include absoluteCenterSelf
+          background: $skinColor
+          top: -2%
+        .lips
+          @include rectangle(85%, 70%)
+          border-top: $border
+          border-radius: 100%
+          @include absoluteCenterSelf
+          top: 60%
+          &::before, &::after
+            @include pseudoElement
+            @include rectangle(.7em, .9em)
+            border-right: $border
+            border-width: .1em !important
+            top: 12%
+            left: -5%
+            transform: rotate(-15deg)
+            background: $skinColor
+          &::after
+            border-right: none
+            border-left: $border
+            left: initial
+            right: -5%
+            transform: rotate(15deg)
