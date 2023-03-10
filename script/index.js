@@ -23,4 +23,4 @@ const lookingAnimation = () => {
   })
 }
 // squidward.setAttribute("style", `--looking: 0`)
-// lookingAnimation()
+lookingAnimation()

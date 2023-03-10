@@ -1,6 +1,7 @@
 $skinColor: #b1d6c5
 $eyeColor: #eae9b1
-$eyePupilColor: #771f0c
+$pupilColor: #771f0c
+$eyelidColor: #75b095
 $freckleColor: #306a53
 $borderColor: black
 $borderSize: .2em
@@ -57,6 +58,7 @@ body
       @include rectangle(100%, 70%)
       border-radius: 100%
       background: $skinColor
+      transform: translateY(calc(var(--looking) * .6em)) rotateY(calc(var(--looking) * -2deg))
       .freckles
         position: relative
         @include square(100%)
@@ -70,7 +72,7 @@ body
       .wrinkles
         @include absoluteCenterSelf
         @include flexCenterItems
-        top: 24%
+        top: 28%
         width: 80%
         height: 30%
         
@@ -104,11 +106,57 @@ body
         background: $skinColor
         left: -5%
         top: -5%
+      .eyes
+        display: flex
+        @include absoluteCenterSelf
+        top: 15%
+        .eye
+          @include rectangle(3.6em, 5.7em)
+          background: $eyeColor
+          border-radius: 100%
+          z-index: 10
+          position: relative
+          overflow: hidden
+          &::before
+            @include pseudoElement
+            @include rectangle(89%, 93%)
+            border-radius: 100%
+            border: $border
+            // top: -1%
+            // left: -1%
+            z-index: 100
+            
+          .pupil
+            @include absoluteCenterSelf
+            @include rectangle(.6em, 1.8em)
+            background: $pupilColor
+            border-radius: 10%
+            z-index: -1
+          .eyelid
+            @include rectangle(100%, 50%)
+            background: $eyelidColor
+            z-index: 60
+            position: relative
+            border: $border
+            // &::before
+            //   @include pseudoElement
+            //   @include rectangle(110%, 10%)
+            //   border: $border
+            //   bottom: 0
+      // .nose
+
+
+            
+
+
+
+
     .bottom
       position: relative
       @include rectangle(100%, 20%)
       margin-top: 15%
       .mouth
+        --transform: rotate(calc(var(--looking) * -2deg))
         @include absoluteCenterSelf
         @include rectangle(12em, 4em)
         background: $skinColor
