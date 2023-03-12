@@ -41,12 +41,14 @@ body
   
 .squidward
   --looking: 0
+  --is-looking: 0
   border: .1em solid #000
   position: relative
   font-size: calc(2vh + 2vw)
   @include square(20em)
   @include flexCenterItems
   align-items: initial
+  overflow: hidden
 
   .head
     @include square(80%)
@@ -92,6 +94,7 @@ body
             right: 0
     .center
       border: $border
+      border-top: none
       @include rectangle(50%, 40%)
       background: $skinColor
       --transform: rotate(calc(var(--looking) * -2deg))
@@ -100,12 +103,12 @@ body
       left: calc(50% + var(--looking) * 10%)
       &::before
         @include pseudoElement
-        @include rectangle(110%, calc(39% + var(--looking) * 13%))
-        // transform: rotate(calc(-7.5deg + var(--looking) * -15deg))
+        @include rectangle(110%, calc(39% + var(--is-looking) * 15%))
+        transform: rotate(calc(var(--looking) * -7.5deg))
         background: $skinColor
         border-radius: .1em
-        left: -5%
-        top: -5.1%
+        left: calc(-5% - (var(--looking) * 1.5%))
+        top: calc(-4% - (var(--is-looking) * 8%))
       .eyes
         display: flex
         @include absoluteCenterSelf
@@ -175,8 +178,8 @@ body
           @include rectangle(65%, 20%)
           @include absoluteCenterSelf
           background: $skinColor
-          top: 0%
-          left: calc(50% + (1.5% + var(--looking) * 3%))
+          top: 2%
+          left: calc(50% + var(--looking) * 1%)
         .lips
           @include rectangle(85%, 70%)
           border-top: $border
@@ -199,9 +202,10 @@ body
             right: -5%
             transform: rotate(15deg)
   .neck
-    @include rectangle(1em, 3.9em)
+    @include rectangle(1em, 5em)
+    --transform: rotate(calc(var(--looking) * 3deg))
     @include absoluteCenterSelf
-    top: 90%
+    top: 93.1%
     background: $skinColor
     border-right: $border
     border-left: $border
