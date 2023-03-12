@@ -13,6 +13,10 @@ Looking to right
 Looking to left  
 ![](images/left.png)
 
+## TODO
+
+- [ ] Missing nose!
+
 ## License
 
 MIT

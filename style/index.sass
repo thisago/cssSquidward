@@ -44,7 +44,7 @@ body
   --is-looking: 0
   border: .1em solid #000
   position: relative
-  font-size: calc(2vh + 2vw)
+  font-size: 10px
   @include square(20em)
   @include flexCenterItems
   align-items: initial
@@ -110,11 +110,13 @@ body
         left: calc(-5% - (var(--looking) * 1.5%))
         top: calc(-4% - (var(--is-looking) * 8%))
       .eyes
-        display: flex
         @include absoluteCenterSelf
         top: 15%
+        @include square(100%)
+        display: flex
+        justify-content: center
         .eye
-          @include rectangle(3.6em, 5.7em)
+          @include rectangle(48%, 92%)
           background: $eyeColor
           border-radius: 100%
           z-index: 10
@@ -131,7 +133,7 @@ body
             
           .pupil
             @include absoluteCenterSelf
-            @include rectangle(.6em, 1.8em)
+            @include rectangle(18%, 32%)
             background: $pupilColor
             border-radius: 10%
             z-index: -1
@@ -141,13 +143,33 @@ body
             z-index: 60
             position: relative
             border: $border
-            // &::before
-            //   @include pseudoElement
-            //   @include rectangle(110%, 10%)
-            //   border: $border
-            //   bottom: 0
-      // .nose
-
+            &::before
+              @include pseudoElement
+              @include absoluteCenterSelf
+              @include rectangle(60%, 5%)
+              border-top: $border
+              top: initial
+              bottom: 0
+    // .nose
+    //   @include absoluteCenterSelf
+    //   @include rectangle(32%, 42%)
+      
+    //   .arrow
+    //     z-index: 11
+    //     @include absoluteCenterSelf
+    //     @include square(0)
+    //     border: 1em solid transparent
+    //     border-right-width: 0
+    //     border-left-color: blue
+    //     outline: $border
+    //   .ball
+    //     @include pseudoElement
+    //     @include square(100%)
+    //     @include absoluteCenterSelf
+    //     background: red
+    //     border: $border
+    //     top: 100%
+    //     border-radius: 100%
 
     .bottom
       position: relative
@@ -156,11 +178,13 @@ body
       .mouth
         --transform: rotate(calc(var(--looking) * -2deg))
         @include absoluteCenterSelf
-        @include rectangle(12em, 4em)
+        @include rectangle(76%, 100%)
+        // @include rectangle(12em, 4em)
         background: $skinColor
         border-radius: 40%
         left: calc(50% + var(--looking) * 10%)
         border: $border
+        z-index: 10
 
         &::before
           @include pseudoElement
@@ -175,7 +199,7 @@ body
           background: white
           top: 86%
         span
-          @include rectangle(65%, 20%)
+          @include rectangle(64.8%, 24%)
           @include absoluteCenterSelf
           background: $skinColor
           top: 2%
@@ -202,10 +226,11 @@ body
             right: -5%
             transform: rotate(15deg)
   .neck
-    @include rectangle(1em, 5em)
+    @include rectangle(5.5%, 31%)
     --transform: rotate(calc(var(--looking) * 3deg))
     @include absoluteCenterSelf
-    top: 93.1%
+    top: 95%
     background: $skinColor
     border-right: $border
     border-left: $border
+    z-index: 10
