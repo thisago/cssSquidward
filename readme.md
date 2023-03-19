@@ -6,6 +6,8 @@ First version!
 
 Online example hosted in Github Pages: https://thisago.github.io/cssSquidward/
 
+Press `a` to turn face left and `d` to turn right
+
 Looking to front  
 ![](images/front.png)
 
