@@ -4,6 +4,8 @@ Pure CSS Squidward
 
 First version!
 
+Online example hosted in Github Pages: https://thisago.github.io/cssSquidward/
+
 Looking to front  
 ![](images/front.png)
 
