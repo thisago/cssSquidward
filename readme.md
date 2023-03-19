@@ -15,7 +15,7 @@ Looking to left
 
 ## TODO
 
-- [ ] Missing nose!
+- [x] Missing nose!
 
 ## License
 
