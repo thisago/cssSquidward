@@ -2,7 +2,7 @@
 
 Pure CSS Squidward
 
-Not finished yet!
+First version!
 
 Looking to front  
 ![](images/front.png)
